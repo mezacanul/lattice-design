@@ -1,0 +1,37 @@
+# Development files
+*.log
+*.tmp
+*.temp
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git files
+.git/
+.gitignore
+
+# Development and testing
+test/
+tests/
+spec/
+__tests__/
+*.test.js
+*.test.jsx
+*.spec.js
+*.spec.jsx
+
+# Build artifacts (if any)
+dist/
+build/
+coverage/
+
+# Documentation source files (keep README.md)
+docs/
