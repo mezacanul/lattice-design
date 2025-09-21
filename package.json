@@ -1,6 +1,6 @@
 {
     "name": "lattice-design",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A simplfied state management library for React.",
     "main": "index.jsx",
     "types": "index.d.ts",
@@ -19,7 +19,7 @@
     "author": "José Eduardo Meza Canul",
     "license": "LGPL-3.0",
     "peerDependencies": {
-        "react": "^18.0.0"
+        "react": ">=16.8.0"
     },
     "engines": {
         "node": ">=14.0.0"
