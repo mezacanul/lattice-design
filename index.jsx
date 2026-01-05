@@ -38,7 +38,7 @@ const allowedEntryFiles = [
     "route-loader.js",
 ]; // Define allowed entry files
 
-// MiniSingleton: Creates a mini context for shared state
+// Singleton: Creates a hook that will share state across components
 function Singleton(initialState) {
     let sharedState = initialState;
     let listeners = [];
@@ -48,7 +48,7 @@ function Singleton(initialState) {
             typeof newState === "function"
                 ? newState(sharedState)
                 : newState;
-        // console.log("MiniSingleton: State updated", sharedState);
+        // console.log("Singleton: State updated", sharedState);
         listeners.forEach((listener) =>
             listener(sharedState)
         );
@@ -113,7 +113,7 @@ function CreateLattice(config) {
     return lattice_grid;
 }
 
-// fromLattice: Dynamically access mini singletons by name
+// fromLattice: Dynamically access singletons/hooks by name
 function fromLattice(hookName) {
     const hookEntry = lattice_grid[hookName];
     if (hookEntry) {
