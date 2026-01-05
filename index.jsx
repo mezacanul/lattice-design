@@ -18,13 +18,13 @@
  */
 /**
  * Lattice Design - A lightweight state management library for React
- * 
+ *
  * 🚧 This package is under active development and testing.
  * We welcome contributions, feedback, and bug reports!
- * 
+ *
  * GitHub: https://github.com/mezacanul/lattice-design
  * Issues: https://github.com/mezacanul/lattice-design/issues
- * 
+ *
  * @author José Eduardo Meza Canul
  * @license LGPL-3.0
  */
@@ -83,19 +83,19 @@ function Singleton(initialState) {
     return useSharedContext;
 }
 
-// Nexus: Initializes app-wide mini singletons
-function Nexus(config) {
+// CreateLattice: Initializes app-wide context
+function CreateLattice(config) {
     if (lattice_grid.initialized) {
         throw new Error(
-            "Nexus can only be initialized once. It should be called in an entry-level file like _app.jsx or main.jsx."
+            "CreateLattice can only be initialized once."
         );
     }
 
     const callerFile = detectCallerFile();
-    console.log("Nexus initialized at ", callerFile);
+    console.log("CreateLattice initialized at ", callerFile);
     // if (!callerFile || !allowedEntryFiles.includes(callerFile)) {
     //     throw new Error(
-    //         `Nexus can only be initialized in entry-level files: ${allowedEntryFiles.join(
+    //         `CreateLattice can only be initialized in entry-level files: ${allowedEntryFiles.join(
     //             ", "
     //         )}. It was called from ${callerFile || "an unknown file"}.`
     //     );
@@ -113,8 +113,8 @@ function Nexus(config) {
     return lattice_grid;
 }
 
-// loadHook: Dynamically access mini singletons by name
-function loadHook(hookName) {
+// fromLattice: Dynamically access mini singletons by name
+function fromLattice(hookName) {
     const hookEntry = lattice_grid[hookName];
     if (hookEntry) {
         return hookEntry.hook();
@@ -148,4 +148,4 @@ function detectCallerFile() {
     return callerFile;
 }
 
-export { Singleton, Nexus, loadHook };
+export { Singleton, CreateLattice, fromLattice };
