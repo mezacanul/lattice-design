@@ -1,13 +1,13 @@
 {
     "name": "lattice-design",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "A simplfied state management library for React.",
     "main": "index.jsx",
     "types": "index.d.ts",
     "homepage": "https://lattice-design.vercel.app/",
     "bugs": "https://github.com/mezacanul/lattice-design/issues",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+      "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
         "state-management",
@@ -25,7 +25,7 @@
         "node": ">=14.0.0"
     },
     "repository": {
-        "type": "git",
-        "url": "https://github.com/mezacanul/lattice-design.git"
+      "type": "git",
+      "url": "https://github.com/mezacanul/lattice-design.git"
     }
-}
+  }
