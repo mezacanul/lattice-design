@@ -2,14 +2,14 @@
 
 > ⚠️ **Development Status**: This package is currently under active development and testing. We welcome contributions, feedback, and bug reports from the community!
 
-A lightweight state management library for React that simplifies state management with Singletons and a centralized Nexus for app-wide context. Use Singletons for scoped state or call Nexus to build an app-wide Lattice. Tap into the Lattice with `loadHook` or create your own localized state with custom hooks. No prop drilling, just simple hooks for state subscription and synced state.
+A lightweight state management library for React that simplifies state management with Singletons and a centralized CreateLattice function for app-wide context. Use Singletons for scoped state or call CreateLattice to build an app-wide Lattice. Tap into the Lattice with `fromLattice` or create your own localized state with custom hooks. No prop drilling, just simple hooks for state subscription and synced state.
 
 Lattice Design eliminates boilerplate code to simplify state management in a clean and sleek way. It provides you with readiness so you can focus on your app's architecture for simple to medium projects. You could try it out on large-scale projects as well, but it requires that you manage your states consciously and responsibly with a component-driven focus to delegate responsibilities directly to components on how to read and manage new states. 
 
 ## Features
 - **Singleton**: Scoped state hooks, syncable via export.
-- **Nexus**: Singleton factory to build an app-wide Lattice, callable once in entry files and referenced in any file.
-- **loadHook**: Access the Lattice by tapping into it with a clean hook API.
+- **CreateLattice**: Singleton factory to build an app-wide Lattice, callable once in entry files and referenced in any file.
+- **fromLattice**: Access the Lattice by tapping into it with a clean loader API.
 
 ## Installation
 ```bash
@@ -22,27 +22,27 @@ See Lattice Design in action with interactive examples!
 
 ## Usage
 
-### App-Wide State with Nexus
+### App-Wide State with CreateLattice
 
 First, initialize your app-wide state lattice in your entry file (e.g., `_app.jsx`, `main.jsx`):
 
 ```jsx
 // In app.jsx or main.jsx
-import { Nexus, Singleton } from "lattice-design";
+import { CreateLattice, Singleton } from "lattice-design";
 
-Nexus({
+CreateLattice({
     useTitle: Singleton("Lattice Design"),
 });
 ```
 
-Then access the state from any component using `loadHook`:
+Then access the state from any component using `fromLattice`:
 
 ```jsx
-import { loadHook } from "lattice-design";
+import { fromLattice } from "lattice-design";
 import { useEffect } from "react";
 
 function MyComponent() {
-    const [title, setTitle] = loadHook("useTitle");
+    const [title, setTitle] = fromLattice("useTitle");
 
     useEffect(() => {
         setTitle("Lattice Design is awesome!");
@@ -101,14 +101,14 @@ Creates a scoped state hook that can be shared across components.
 - **initialState**: The initial value for the state
 - **Returns**: A hook function that returns `[state, setState]`
 
-### `Nexus(config)`
+### `CreateLattice(config)`
 Initializes app-wide state lattice. Should be called once in your entry file.
 - **config**: Object mapping hook names to Singleton instances
 - **Returns**: Nothing (void) - just initializes the lattice
 
-### `loadHook(hookName)`
+### `fromLattice(hookName)`
 Access hooks from the app-wide lattice.
-- **hookName**: String name of the hook defined in Nexus
+- **hookName**: String name of the hook defined in CreateLattice
 - **Returns**: `[state, setState]` tuple for the requested hook
 
 ### `reset()` Method
@@ -147,7 +147,7 @@ export const useCounter = Singleton(INITIAL_STATES.counter);
 - ✅ **Tiny footprint** - Lightweight with no external dependencies
 - ✅ **React-first** - Built specifically for React hooks
 - ✅ **Type-safe ready** - Works great with TypeScript
-- ✅ **Flexible** - Use globally with Nexus or locally with Singletons
+- ✅ **Flexible** - Use globally with CreateLattice or locally with Singletons
 - ✅ **Simple API** - Just 3 functions to learn
 
 ## Contributing
